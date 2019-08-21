@@ -3,6 +3,7 @@
     <top-header />
     <pricing-banner></pricing-banner>
     <pricing-selector></pricing-selector>
+    <pricing-slider></pricing-slider>
     <pricing-legals></pricing-legals>
     <pricing-quote></pricing-quote>
   </div>
@@ -15,6 +16,7 @@ import PricingBanner from './components/PricingBanner.vue';
 import PricingSelector from './components/PricingSelector.vue';
 import PricingLegals from './components/PricingLegals.vue';
 import PricingQuote from './components/PricingQuote.vue';
+import PricingSlider from './components/PricingSlider.vue';
 
 @Component({
   components: {
@@ -22,6 +24,7 @@ import PricingQuote from './components/PricingQuote.vue';
     PricingBanner,
     PricingSelector,
     PricingLegals,
+    PricingSlider,
     PricingQuote,
   },
 })
