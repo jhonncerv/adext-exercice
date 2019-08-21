@@ -90,11 +90,19 @@ export default class App extends Vue {}
     line-height: 17px;
     margin: 0 0 6px;
     width: 100%;
+
+    @media only screen and (min-width: 350px) {
+      font-size: 14px;
+    }
   }
 
   &__text {
     font-size: 9px;
     line-height: 12px;
+
+    @media only screen and (min-width: 350px) {
+      font-size: 10px;
+    }
   }
 }
 
@@ -151,6 +159,10 @@ export default class App extends Vue {}
     height: 35px;
     margin: 0 20px;
     width: 1px;
+  }
+
+  &__logo {
+    width: 39px;
   }
 }
 </style>
