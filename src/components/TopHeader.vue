@@ -24,8 +24,17 @@ export default class TopHeader extends Vue {}
         padding: 0 21px;
         display: flex;
 
+        @media only screen and (min-width: 1024px) {
+            height: 80px;
+            padding: 0 56px;
+        }
+
         &__logo {
             width: 52px;
+
+            @media only screen and (min-width: 1024px) {
+                width: 90px;
+            }
         }
 
         &__user {
@@ -38,11 +47,20 @@ export default class TopHeader extends Vue {}
         &__bell {
             margin-right: 23px;
             width: 13px;
+
+            @media only screen and (min-width: 1024px) {
+                margin-right: 62px;
+                width: 18px;
+            }
         }
 
         &__profile-image {
             margin-right: 3px;
             width: 25px;
+
+            @media only screen and (min-width: 1024px) {
+                width: 50px;
+            }
         }
     }
 </style>

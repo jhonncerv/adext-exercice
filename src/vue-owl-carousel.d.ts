@@ -1,1 +1,1 @@
-declare module 'vue-carousel';
+declare module 'vue-tiny-slider';

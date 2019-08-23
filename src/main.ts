@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
-import VueCarousel from 'vue-carousel';
+import VueTinySlider from 'vue-tiny-slider';
 
 Vue.config.productionTip = false;
-Vue.use(VueCarousel);
+Vue.use(VueTinySlider);
 
 new Vue({
   render: (h) => h(App),

@@ -1,5 +1,6 @@
 <template>
     <div class="banner">
+        <img class="banner__fondo" src="./../assets/img/ilustración-pricing.png" alt="video promotional">
         <div class="banner__video">
             <img class="banner__video__fondo" src="./../assets/img/phone.png" alt="video promotional">
             <div class="banner__video__play">
@@ -8,7 +9,6 @@
             </div>
         </div>
         <div class="banner__details">
-            <img class="banner__details__fondo" src="./../assets/img/ilustración-pricing.png" alt="video promotional">
             <div class="banner__details__wrap">
                 <h2 class="banner__details__titulo">CHOOSE AN ADEXT AI PLAN</h2>  
                 <h2 class="banner__details__titulo banner__details__titulo--blanco">THAT FITS YOUR GOALS</h2>
@@ -36,16 +36,43 @@ export default class PricingBanner extends Vue {}
     }
 
     .banner {
+        background: #151C24;
+        position: relative;
+        overflow: hidden;
+
+        @media only screen and (min-width: 1024px) {
+            display: flex;
+            flex-flow: row-reverse;
+            justify-content: flex-end;
+            height: 274px;
+            padding: 26px 100px;
+            box-sizing: border-box;
+        }
+
         &__video {
             background: #000000;
             height: 56px;
             overflow: hidden;
             position: relative;
             width: 100%;
+
+            @media only screen and (min-width: 1024px) {
+                border-radius: 50%;
+                right: 0;
+                min-width: 202px;
+                height: 202px;
+                max-width: 200px;
+                flex: 1;
+            }
             
             &__fondo {
                 @extend %fondo;
                 opacity: .42;
+
+                @media only screen and (min-width: 1024px) {
+                    width: auto;
+                    height: 100%;
+                }
             }
 
             &__play {
@@ -55,6 +82,12 @@ export default class PricingBanner extends Vue {}
                 margin: 0 34px;
                 justify-content: flex-end;
                 position: relative;
+
+                @media only screen and (min-width: 1024px) {
+                    flex-flow: column-reverse;
+                    justify-content: center;
+                    margin: 10px 0 0;
+                }
             }
 
             &__text {
@@ -64,24 +97,34 @@ export default class PricingBanner extends Vue {}
                 margin-right: 8px;
                 text-align: center;
                 width: 124px;
+
+                @media only screen and (min-width: 1024px) {
+                    margin: 9px 0 0;
+                }
             }
 
             &__btn {
                 width: 42px;
+
+                @media only screen and (min-width: 1024px) {
+                    width: 50px;
+                }
             }
         }
 
+        &__fondo {
+            @extend %fondo;
+
+            opacity: .39;
+            width: 1984px;
+        }
+
         &__details {
-            background: #151C24;
             height: 213px;
-            overflow: hidden;
-            position: relative;
 
-            &__fondo {
-                @extend %fondo;
-
-                opacity: .39;
-                width: 1984px;
+            @media only screen and (min-width: 1024px) {
+                flex: 2;
+                max-width: 70%;
             }
 
             &__wrap {
@@ -95,9 +138,17 @@ export default class PricingBanner extends Vue {}
                 line-height: 48px;
                 margin: 0;
 
+                @media only screen and (min-width: 1024px) {
+                    font-size: 35px;
+                }
+
                 &--blanco {
                     color: #ffffff;
                     margin-top: -24px;
+
+                    @media only screen and (min-width: 1024px) {
+                        margin: 0 0 15px;
+                    }
                 }
             }
 
@@ -106,6 +157,11 @@ export default class PricingBanner extends Vue {}
                 line-height: 22px;
                 margin: 0;
                 color: #6149FB;
+
+                @media only screen and (min-width: 1024px) {
+                    font-size: 16px;
+                    margin-bottom: 9px;
+                }
 
                 &--blanco {
                     color: #ffffff;
