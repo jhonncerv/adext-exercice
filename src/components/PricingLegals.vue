@@ -39,6 +39,10 @@ export default class PricingLegals extends Vue {}
   max-width: 605px;
   margin: 0 auto;
 
+  @media only screen and (min-width: 768px) {
+      margin: 0 auto 16px;
+  }
+
   @media only screen and (min-width: 1024px) {
       margin: 0 auto 16px;
   }

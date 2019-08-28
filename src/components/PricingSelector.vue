@@ -29,6 +29,10 @@ export default class PricingSelector extends Vue {}
 
 <style lang="scss">
     .selector {
+        @media only screen and (min-width: 1024px) {
+            margin-bottom: 32px;
+        }
+
         &__fondo {
             background: #ffffff;
 
