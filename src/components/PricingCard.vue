@@ -1,12 +1,13 @@
 <template>
-    <div class="card">
-        <div class="card__header card__header--purple">
-            <div class="card__label">
-                <p class="card__label__percent">15% OFF</p>
+    <div class="card" :class="isActive && mobile ? 'card--active': ''">
+        <div class="card__header" :class="extraClass">
+            <div class="card__label" v-if="percent">
+                <p class="card__label__percent">{{ percent }}</p>
+                <p class="card__label__percent" v-if="percentDos">{{ percentDos }}</p>
             </div>
-            <div class="card__header__wrap">
-                <h2 class="card__header__title">ESSENTIAL</h2>
-                <p class="card__header__text">Up to $2,500 monthly ad spend </p>
+            <div class="card__header__wrap" :class="percent ? '':'card__header__wrap--space'">
+                <h2 class="card__header__title">{{ title }}</h2>
+                <p class="card__header__text">{{ textHeader }}</p>
                 <div class="card__main">
                     <span class="card__main__dolar">$</span>
                     <h1 class="card__main__price">{{ header }}</h1>
@@ -17,27 +18,35 @@
                 <p class="card__header__bottom">{{ headerBottom }}</p>
             </div>
         </div>
-        <div class="card__body">
-            <div class="card__body__wrap" v-for="list in lists" :key="list.id">
-                <h4 class="card__body__title">{{ list.title }}</h4>
-                <ul class="card__body__list">
-                    <template  v-for="element in list.elements">
-                        <li :key="element" v-if="element" class="card__body__element">{{ element }}</li>
-                        <li v-else :key="element" class="card__body__element card__body__element--nocheck">
-                            -
-                        </li>
-                    </template>
-                </ul>
+        <div class="accordion">
+            <div class="accordion__hide" v-if="isActive || !mobile">
+                <div class="card__body">
+                    <div class="card__body__wrap" v-for="list in lists" :key="list.id">
+                        <h4 class="card__body__title">{{ list.title }}</h4>
+                        <ul class="card__body__list">
+                            <template  v-for="element in list.elements">
+                                <li :key="element" v-if="element" class="card__body__element">{{ element }}</li>
+                                <li v-else :key="element" class="card__body__element card__body__element--nocheck">
+                                    -
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card__footer">
+                    <a class="card__footer__button" :class="extraButtonClass" target="_blank" href="#">{{ buttonText }}</a>
+                    <p class="card__footer__color">
+                        {{ footerText}} <a class="card__footer__link" target="_blank" href="#">what's this?</a>
+                    </p>
+                    <p class="card__footer__text">
+                        {{ footerSlogan }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="card__footer">
-            <a class="card__footer__button" target="_blank" href="#">{{ buttonText }}</a>
-            <p class="card__footer__color">
-                {{ footerText}} <a class="card__footer__link" target="_blank" href="#">what's this?</a>
-            </p>
-            <p class="card__footer__text">
-                {{ footerSlogan }}
-            </p>
+            <a class="accordion__btn" @click="isActive = !isActive" v-if="mobile">
+                <span class="accordion__text">Details</span>
+                <img src="./../assets/img/arrow.svg" alt="arrow down" class="accordion__img">
+            </a>
         </div>
     </div>
 </template>
@@ -48,6 +57,9 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class PricingCard extends Vue {
     @Prop() private info!: any;
+
+    private isActive = false;
+    private mobile = window.innerWidth <= 700;
 
     get header() {
         return this.info.header;
@@ -72,6 +84,36 @@ export default class PricingCard extends Vue {
     get headerBottom() {
         return this.info.headerBottom;
     }
+
+    get percent() {
+        return this.info.percent;
+    }
+
+    get title() {
+        return this.info.title;
+    }
+
+    get textHeader() {
+        return this.info.textHeader;
+    }
+
+    get extraClass() {
+        return this.info.extraClass;
+    }
+
+    get extraButtonClass() {
+        return this.info.extraButtonClass;
+    }
+
+    get percentDos() {
+        return this.info.percentDos;
+    }
+
+    created() {
+        addEventListener('resize', () => {
+            this.mobile = window.innerWidth <= 700;
+        });
+    }
 }
 </script>
 
@@ -81,33 +123,63 @@ export default class PricingCard extends Vue {
         border-radius: 5px;
         overflow: hidden;
         width: 250px;
+        
+        &--active {
+            .card__header {
+                background: #6149FB;
+
+                .card__header__text,
+                .card__header__title,
+                .card__main__dolar,
+                .card__main__price,
+                .card__main__currency {
+                    color: #ffffff;
+                }
+
+                .card__header__bottom {
+                    color: #5EFF82;
+                }
+
+                .card__body__list {
+                    list-style-image: url('../assets/img/check-active.svg');
+                }
+            }
+        }
 
         &__label {
-            background: #3F2EA8;
-            height: 25px;
-            right: 0;
-            top: 0;
-            width: 100px;
-            margin: 0 0 8px auto;
+            display: flex;
 
             &__percent {
+                background: #3F2EA8;
+                color: #ffffff;
                 font-size: 14px;
                 line-height: 17px;
-                margin: 0;
+                height: 19px;
+                margin: 0 0 8px auto;
                 text-align: center;
                 padding: 3px;
                 position: relative;
+                width: 90px;
 
                 &::before {
                     content: '';
                     border: 0 solid transparent;
                     border-top: 25px solid #3F2EA8;
-                    border-left: 30px solid transparent;
+                    border-left: 23px solid transparent;
                     height: 0;
                     position: absolute;
                     width: 0;
-                    left: -30px;
+                    left: -23px;
                     top: 0;
+                }
+
+                & + .card__label__percent {
+                    background: #FF922D;
+                    margin-left: -5px;
+
+                    &::before {
+                        border-top-color: #FF922D;
+                    }
                 }
             }
         }
@@ -146,6 +218,10 @@ export default class PricingCard extends Vue {
             &__wrap {
                 margin: 0 auto;
                 width: 190px;
+
+                &--space {
+                    margin-top: 33px;
+                }
             }
 
             &__title {
@@ -164,26 +240,47 @@ export default class PricingCard extends Vue {
             }
 
             &__bottom {
+                color: #624AFB;
                 font-size: 14px;
                 line-height: 17px;
                 margin: 0;
                 padding: 0 0 17px;
             }
 
-            &--purple {
-                background: #6149FB;
+            @media only screen and (min-width: 1024px) {
+                &--purple {
+                    background: #6149FB;
 
-                .card__label__percent,
-                .card__header__text,
-                .card__header__title,
+                    .card__header__text,
+                    .card__header__title,
+                    .card__main__dolar,
+                    .card__main__price,
+                    .card__main__currency {
+                        color: #ffffff;
+                    }
+
+                    .card__header__bottom {
+                        color: #5EFF82;
+                    }
+                }
+            }
+
+            &--bigWrap {
+                .card__header__wrap {
+                    width: 205px;
+                }
+
                 .card__main__dolar,
-                .card__main__price,
                 .card__main__currency {
-                    color: #ffffff;
+                    display: none;
+                }
+
+                .card__main__price {
+                    font-size: 28px;
                 }
 
                 .card__header__bottom {
-                    color: #5EFF82;
+                    font-size: 12px;
                 }
             }
         }
@@ -234,6 +331,12 @@ export default class PricingCard extends Vue {
                 text-decoration: none;
                 font-size: 18px;
                 text-transform: uppercase;
+
+                @media only screen and (min-width: 1024px) {
+                    &--disable {
+                        background: #CFCFD7;
+                    }
+                }
             }
 
             &__color {
@@ -253,6 +356,30 @@ export default class PricingCard extends Vue {
                 font-size: 14px;
                 margin: 0 0 39px;
             }
+        }
+    }
+
+    .accordion {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        padding: 13px 0;
+
+        &__btn {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &__text {
+            color: #AEBACA;
+            font-size: 14px;
+            margin: 0 0 5px;
+        }
+
+        &__img {
+            width: 28px;
         }
     }
 </style>

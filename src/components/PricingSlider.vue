@@ -1,11 +1,10 @@
 <template>
     <div class="slider">
-        <VueTinySlider :mouse-drag="true" :loop="false" gutter="20" :center=true :items="3">
+        <VueTinySlider center :speed="400" :auto-width=true :controls=false :mouse-drag="true" :loop="false" gutter="20" :items="2" :responsive="responsive">
             <div><pricing-card :info="info[0]"></pricing-card></div>
             <div><pricing-card :info="info[1]"></pricing-card></div>
             <div><pricing-card :info="info[2]"></pricing-card></div>
         </VueTinySlider>
-      
     </div>
 </template>
 
@@ -23,6 +22,14 @@ import VueTinySlider from 'vue-tiny-slider';
 export default class PricingSlider extends Vue {
 
     private info: any[] = [];
+    private responsive = {
+        768: {
+            items: 3,
+        },
+        1024: {
+            items: 3,
+        },
+    };
     private listOne: Object = {
         id: 1,
         title: 'Ad Accounts',
@@ -54,6 +61,61 @@ export default class PricingSlider extends Vue {
             'CSV Export',
         ],
     };
+    private listFour: Object = {
+        id: 4,
+        title: 'Ad Accounts',
+        elements: [
+            'Up to 5 Facebook Ad Accounts',
+            'Up to 5 Google Ad Accounts',
+            'Video Tutorial',
+            null,
+        ],
+    };
+    private listFive: object = {
+        id: 5,
+        title: 'Support',
+        elements: [
+            null,
+            '24/5 Support',
+            'Live Support',
+            null,
+            null,
+            null,
+            null,
+        ],
+    };
+    private listSix: object = {
+        id: 3,
+        title: 'Reporting',
+        elements: [
+            'Dashboard Reporting',
+            'Advanced Export',
+        ],
+    };
+    private listSeven: Object = {
+        id: 4,
+        title: 'Ad Accounts',
+        elements: [
+            'Flexible/Contact Us',
+            'Platform Training ',
+            'Live Demo',
+            null,
+        ],
+    };
+    private listEight: object = {
+        id: 5,
+        title: 'Support',
+        elements: [
+            'Personalized Onboarding ',
+            '24/5 Support & Holiday',
+            'Live Chat',
+            'Phone',
+            'Campaign Deployment Support',
+            'Dedicated Support Team',
+            'Performance Assessment ',
+        ],
+    };
+
 
     public created() {
         this.loadInfo();
@@ -61,7 +123,11 @@ export default class PricingSlider extends Vue {
 
     private loadInfo(): void {
         this.info[0] = {
-            header: '200',
+            percent: '15% OFF',
+            extraClass: 'card__header--purple',
+            title: 'ESSENTIAL',
+            textHeader: 'Up to $2,500 monthly ad spend',
+            header: '254',
             lists: [
                 this.listOne,
                 this.listTwo,
@@ -73,28 +139,37 @@ export default class PricingSlider extends Vue {
             headerBottom: 'Automate your performance',
         };
         this.info[1] = {
-            header: '200',
+            percent: '15% OFF',
+            percentDos: 'Most popular',
+            title: 'PROFESSIONAL',
+            textHeader: 'Up to $25,000 monthly ad spend ',
+            header: '660',
             lists: [
-                this.listOne,
-                this.listTwo,
+                this.listFour,
+                this.listFive,
                 this.listThree,
             ],
-            footerSlogan: 'Enjoy all of Adext\'s potential',
-            buttonText: 'GET STARTED',
-            footerText: 'Explore AI only',
-            headerBottom: 'Automate your performance',
+            headerBottom: 'Performance power at scale',
+            buttonText: 'START FREE TRY OUT',
+            footerText: 'Explorer AI vs. No AI',
+            footerSlogan: 'Try Adext vs your campaigns',
+            extraButtonClass: 'card__footer__button--disable',
         };
         this.info[2] = {
-            header: '200',
+            title: 'AGENCY / ENTERPRISE  ',
+            textHeader: 'Flexible/Contact Us',
+            header: 'Book Live Demo',
+            extraClass: 'card__header--bigWrap',
             lists: [
-                this.listOne,
-                this.listTwo,
-                this.listThree,
+                this.listSeven,
+                this.listEight,
+                this.listSix,
             ],
-            footerSlogan: 'Enjoy all of Adext\'s potential',
-            buttonText: 'GET STARTED',
-            footerText: 'Explore AI only',
-            headerBottom: 'Automate your performance',
+            headerBottom: 'Better performance, higher retention',
+            buttonText: 'BOOK LIVE DEMO',
+            footerText: 'Explorer AI vs. No AI ',
+            footerSlogan: 'Try Adext vs your campaigns',
+            extraButtonClass: 'card__footer__button--disable',
         };
     }
 }
@@ -120,4 +195,5 @@ export default class PricingSlider extends Vue {
             margin-bottom: 50px;
         }
     }
+
 </style>
