@@ -30,7 +30,7 @@ export default class PricingSlider extends Vue {
             items: 3,
         },
     };
-    private listOne: Object = {
+    private listOne: object = {
         id: 1,
         title: 'Ad Accounts',
         elements: [
@@ -61,7 +61,7 @@ export default class PricingSlider extends Vue {
             'CSV Export',
         ],
     };
-    private listFour: Object = {
+    private listFour: object = {
         id: 4,
         title: 'Ad Accounts',
         elements: [
@@ -92,7 +92,7 @@ export default class PricingSlider extends Vue {
             'Advanced Export',
         ],
     };
-    private listSeven: Object = {
+    private listSeven: object = {
         id: 4,
         title: 'Ad Accounts',
         elements: [

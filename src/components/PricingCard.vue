@@ -109,7 +109,7 @@ export default class PricingCard extends Vue {
         return this.info.percentDos;
     }
 
-    created() {
+    public created() {
         addEventListener('resize', () => {
             this.mobile = window.innerWidth <= 700;
         });
@@ -139,10 +139,10 @@ export default class PricingCard extends Vue {
                 .card__header__bottom {
                     color: #5EFF82;
                 }
+            }
 
-                .card__body__list {
-                    list-style-image: url('../assets/img/check-active.svg');
-                }
+            .card__body__list {
+                list-style-image: url('../assets/img/check-active.svg');
             }
         }
 
