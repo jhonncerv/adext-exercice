@@ -1,29 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <top-header />
+    <pricing-banner></pricing-banner>
+    <pricing-selector></pricing-selector>
+    <pricing-slider></pricing-slider>
+    <pricing-legals></pricing-legals>
+    <pricing-quote></pricing-quote>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import TopHeader from './components/TopHeader.vue';
+import PricingBanner from './components/PricingBanner.vue';
+import PricingSelector from './components/PricingSelector.vue';
+import PricingLegals from './components/PricingLegals.vue';
+import PricingQuote from './components/PricingQuote.vue';
+import PricingSlider from './components/PricingSlider.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    TopHeader,
+    PricingBanner,
+    PricingSelector,
+    PricingLegals,
+    PricingSlider,
+    PricingQuote,
   },
 })
 export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+@import url('./assets/css/styles.css');
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Barlow', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

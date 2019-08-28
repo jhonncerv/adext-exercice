@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="50.0000000000002" width="49.57009813514151">
+  <defs>
+    <ellipse id="ellipse-1" opacity="1" rx="20.78504906757065" ry="21.0000000000001" cx="24.78504906757065" cy="25.0000000000001"/>
+    <filter id="filter-2" filterUnits="userSpaceOnUse" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset in="SourceAlpha" result="shadow-1-feOffset-shadow" dx="0" dy="0"/>
+      <feGaussianBlur in="shadow-1-feOffset-shadow" result="shadow-1-feGaussianBlur-shadow" stdDeviation="2"/>
+      <feColorMatrix in="shadow-1-feGaussianBlur-shadow" result="shadow-1-feColorMatrix-shadow" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M20.857573216334124,17.681822449517423 C19.524244052742862,16.908391077976603 17.854039505192304,17.870412431232687 17.854039505192304,19.411828256040025 L17.854039505192304,29.408335936563837 C17.854039505192304,31.720459673774847 20.359346326518143,33.16349170365898 22.359340071905038,32.00334464634774 L29.479421072897257,27.873161219438686 C31.472353650613613,26.71711017138401 31.472353650613613,23.839194847925555 29.479421072897257,22.683143799870876 L20.857573216334124,17.681822449517423Z"/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <use xlink:href="#ellipse-1" fill="black" filter="url(#filter-2)" stroke="black" stroke-opacity="0" stroke-width="0"/>
+      <use xlink:href="#ellipse-1" fill="rgb(255,40,97)" fill-opacity="1"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-3" fill="rgb(255,255,255)" fill-opacity="1"/>
+    </g>
+  </g>
+</svg>

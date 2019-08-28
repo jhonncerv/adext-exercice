@@ -1,0 +1,9 @@
+body {
+    background: #F7F7FC;
+    margin: 0;
+    font-size: 16px;
+}
+
+*:focus {
+    outline: none;
+}
